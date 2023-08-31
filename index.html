@@ -1,20 +1,26 @@
-<html>
-<head>
-	<meta charset="UTF-8">
-	<meta http-equiv="refresh" content="0; URL=https://trucknbus.hyundai.com/hydrogen/ko/download/catalog_elec-city-fuel-cell_ko.pdf">
-	<title>Redirecting...</title>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-110672470-3"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    $.ajax({
+      type: "GET",
+      dataType: "json",
+      url: "https://www.googleapis.com/youtube/v3/videos?part=snippet&chart=mostPopular&maxResults=25&regionCode=kr&key=AIzaSyBx0aWzw6mD_u3KNHWCIl-DKnHoImQoPlc",
+      contentType: "application/json",
+      success: function (data) {
+        data.items.forEach(function (element, index) {
+          $('body').append('<iframe width="560" height="315" src="https://www.youtube.com/embed/' +
+            element.id.videoId +
+            '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>'
+          );
+        });
+      },
+      complete: function (data) {},
+      error: function (xhr, status, error) {
+        console.log("유튜브 요청 에러: " + error);
+      }
+    });
+  });
+</script>
 
-    gtag('config', 'UA-110672470-3');
-  </script>
-
-</head>
 <body>
-	<p>If you are not redirected automatically, follow this <a href="https://trucknbus.hyundai.com/hydrogen/ko/download/catalog_elec-city-fuel-cell_ko.pdf">link to the new page</a>.</p>
 </body>
-</html>
